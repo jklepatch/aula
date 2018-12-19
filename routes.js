@@ -42,7 +42,21 @@ router.get('/api/v1/metadata/:id', (req, res) => {
  * Single song file
  */
 router.get('/api/v1/songs/:id', (req, res) => {
-  res.send('single song');
+  const id = req.params.id;
+  fs.readFile(config.METADATA, 'utf8', (err, data) => {
+    if(err) {
+      res.status(500);
+      return res.send({error: 'Service unaivalable'});
+    }
+    data = JSON.parse(data);
+    const d = data.filter((d) => d.id == id);
+    if(d.length == 0) {
+      res.status(404);
+      return res.send({error: `Song with id ${id} was not found`});
+    }
+    const song = fs.createReadStream(`${config.SONG_DIR}/${d[0].fileRef}`);
+    song.pipe(res);
+  });
 });
 
 module.exports = router;

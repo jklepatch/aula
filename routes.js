@@ -1,17 +1,14 @@
-const fs = require('fs');
 const router = require('express').Router();
 const config = require('./config');
-const utils = require('./utils');
+const services = require('./services');
+const fs = require('fs');
 
 /**
  * List of all song metadata
  */
 router.get('/api/v1/metadata', async (req, res) => {
   try {
-    const metadata = await utils.readFile(config.METADATA);
-    //metadata is a string and express set content-type to html
-    //for strings. Forces express to respond as json instead
-    res.setHeader('Content-Type', 'application/json');
+    const metadata = await services.getMetadataList();
     res.send(metadata);
   } catch(_e) {
     res.status(500);
@@ -25,8 +22,7 @@ router.get('/api/v1/metadata', async (req, res) => {
 router.get('/api/v1/metadata/:id', async (req, res) => {
   const id = req.params.id;
   try {
-    let metadata = await utils.readFile(config.METADATA);
-    metadata = JSON.parse(metadata);
+    const metadata = await services.getMetadataList();
     const d = metadata.filter((d) => d.id == id);
     if(d.length == 0) {
       res.status(404);
@@ -45,8 +41,7 @@ router.get('/api/v1/metadata/:id', async (req, res) => {
 router.get('/api/v1/songs/:id', async (req, res) => {
   const id = req.params.id;
   try {
-    let metadata = await utils.readFile(config.METADATA);
-    metadata = JSON.parse(metadata);
+    const metadata = await services.getMetadataList();
     const d = metadata.filter((d) => d.id == id);
     if(d.length == 0) {
       res.status(404);

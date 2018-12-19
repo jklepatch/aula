@@ -1,10 +1,10 @@
 const app = require('express')();
 const http = require('http').Server(app);
 const router = require('./routes');
-const PORT = 3000;
+const config = require('./config');
 
 app.use(router);
 
-http.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}`);
+http.listen(config.PORT, () => {
+  console.log(`Listening on port ${config.PORT}`);
 });

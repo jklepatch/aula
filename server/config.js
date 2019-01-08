@@ -1,5 +1,5 @@
 module.exports = {
   PORT: 3000,
-  METADATA: '../metadata.json',
-  SONG_DIR: '../songs'
+  METADATA: './data/metadata.json',
+  SONG_DIR: './data/songs'
 };

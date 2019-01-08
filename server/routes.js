@@ -10,6 +10,7 @@ router.get('/api/v1/metadata', async (req, res) => {
     const metadata = await services.getMetadataList();
     res.send(metadata);
   } catch(e) {
+    console.log(e);
     errors.errorHandler(res, e);
   }
 });

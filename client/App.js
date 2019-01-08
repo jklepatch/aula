@@ -21,9 +21,13 @@ class App extends Component {
     return (
       <div>
         <CssBaseline />
-        <h1>Aula App!</h1>
-        <Songs songs={metadata.list} />
-        <Player song={metaSelection && metaSelection[0]} />
+        <div className="header">
+          <h1>Aula App!</h1>
+        </div>
+        <div className="main">
+          <Songs songs={metadata.list} />
+          <Player song={metaSelection && metaSelection[0]} />
+        </div>
       </div>
     );
   }

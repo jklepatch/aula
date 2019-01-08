@@ -1,0 +1,5 @@
+.header {
+  @extend .card;
+  background-color: $lightBlack;
+  color: $lightWhite;
+}

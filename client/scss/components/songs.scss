@@ -1,0 +1,15 @@
+.songs {
+  flex: 1;
+  ul {
+    line-height: 1.5em;
+    .selected {
+      background-color: $lightGrey;
+    }
+    li {
+      padding: 0.5em 1em 0.5em 0;
+      .duration {
+        font-style: italic;
+      }
+    }
+  }
+}

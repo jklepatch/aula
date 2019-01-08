@@ -24,6 +24,14 @@ module.exports = {
             ]
           }
         }
+      },
+      {
+        test: /client\/*.*\.scss$/,
+        use: [
+          "style-loader",
+          "css-loader",
+          "sass-loader"
+        ]
       }
     ]
   },

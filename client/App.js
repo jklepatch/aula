@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import Songs from './components/Songs';
 import Player from './components/Player';
 import withMetadata from './store/metadata';
@@ -19,6 +20,7 @@ class App extends Component {
     const metaSelection = metadata.list.filter((m) => m.id === this.state.selection);
     return (
       <div>
+        <CssBaseline />
         <h1>Aula App!</h1>
         <Songs songs={metadata.list} />
         <Player song={metaSelection && metaSelection[0]} />

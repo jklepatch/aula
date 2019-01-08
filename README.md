@@ -6,14 +6,22 @@ Music player with React + Nodejs (so far only the backend in Nodejs is implement
 
 Requirements: Nodejs 8+
 
-Install dependencies:
+1. Install dependencies:
 
 ```
 npm install
 ```
 
-Run the backend:
+2. Run the server:
 
 ```
-npm start
+npm start:server
 ```
+
+3. (other terminal) Run the frontend:
+
+```
+npm start:client
+```
+
+4. Then go to your browser at `http://localhost:9000`

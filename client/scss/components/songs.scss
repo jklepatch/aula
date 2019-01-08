@@ -1,11 +1,12 @@
 .songs {
-  flex: 1;
+  flex: 2;
   ul {
     line-height: 1.5em;
     .selected {
       background-color: $lightGrey;
     }
     li {
+      cursor: pointer;
       padding: 0.5em 1em 0.5em 0;
       .duration {
         font-style: italic;

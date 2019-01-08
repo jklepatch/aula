@@ -4,20 +4,17 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Songs from './components/Songs';
 import Player from './components/Player';
 import withMetadata from './store/metadata';
+import withUI from './store/ui';
 
 class App extends Component {
-  state = {
-    selection: "1"
-  }
-
   componentDidMount = async () => {
     this.props.getMetadataList();
   }
 
   render() {
-    const { metadata } = this.props;
+    const { metadata, ui } = this.props;
     if(metadata.list.length === 0) return <div>Loading...</div>
-    const metaSelection = metadata.list.filter((m) => m.id === this.state.selection);
+      //const metaSelection = metadata.list.filter((m) => m.id === this.state.selection);
     return (
       <div>
         <CssBaseline />
@@ -26,7 +23,7 @@ class App extends Component {
         </div>
         <div className="main">
           <Songs songs={metadata.list} />
-          <Player song={metaSelection && metaSelection[0]} />
+          <Player song={ui.selectedSong} />
         </div>
       </div>
     );
@@ -35,7 +32,8 @@ class App extends Component {
 
 App.propTypes = {
   getMetadataList: PropTypes.func.isRequired,
-  metadata: PropTypes.object
+  metadata: PropTypes.object,
+  ui: PropTypes.object
 }
 
-export default withMetadata(App);
+export default withUI(withMetadata(App));

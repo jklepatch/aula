@@ -1,30 +1,35 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Songs from './components/Songs';
 import Player from './components/Player';
-import { getMetadataList } from './api';
+import withMetadata from './store/metadata';
 
 class App extends Component {
   state = {
-    meta: [],
     selection: "1"
   }
 
   componentDidMount = async () => {
-    const resp = await getMetadataList();
-    this.setState({meta: resp.data});
+    this.props.getMetadataList();
   }
 
   render() {
-    const { meta, selection } = this.state;
-    const metaSelection = meta.filter((m) => m.id === selection);
+    const { metadata } = this.props;
+    if(metadata.list.length === 0) return <div>Loading...</div>
+    const metaSelection = metadata.list.filter((m) => m.id === this.state.selection);
     return (
       <div>
         <h1>Aula App!</h1>
-        <Songs songs={meta} />
+        <Songs songs={metadata.list} />
         <Player song={metaSelection && metaSelection[0]} />
       </div>
     );
   }
 }
 
-export default App;
+App.propTypes = {
+  getMetadataList: PropTypes.func.isRequired,
+  metadata: PropTypes.object
+}
+
+export default withMetadata(App);

@@ -1,4 +1,3 @@
-import dispatch from 'redux';
 import { createAction } from '../utils';
 
 export const constants = {
@@ -12,15 +11,14 @@ export const actions = {
 };
 
 const initialState = {
-  metadata: []
+  list: []
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case constants.GET_METADATA_LIST.SUCCESS:
-      return Object.assign({}, state, {metadata: action.metadata});
-      break;
-    default:
-      return state;
+  case constants.GET_METADATA_LIST.SUCCESS:
+    return Object.assign({}, state, {list: action.metadata});
+  default:
+    return state;
   }
-}
+};

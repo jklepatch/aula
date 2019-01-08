@@ -4,6 +4,6 @@ const createAction = type => {
     SUCCESS: `${type}.SUCCESS`,
     FAILED: `${type}.FAILED`
   };
-}
+};
 
 export { createAction };

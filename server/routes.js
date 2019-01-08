@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const config = require('./config');
 const services = require('./services');
 const errors = require('./errors');
 

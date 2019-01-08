@@ -4,8 +4,9 @@
   "description": "Music player with React + Nodejs",
   "main": "index.js",
   "scripts": {
-    "start:server": "node_modules/.bin/nodemon index.js",
+    "start:server": "node_modules/.bin/nodemon server/index.js",
     "start:client": "node_modules/.bin/webpack-dev-server --mode development",
+    "lint:server": "node_modules/.bin/eslint server",
     "lint:client": "node_modules/.bin/eslint client"
   },
   "keywords": [],

@@ -6,7 +6,7 @@ const readFile = (path, opts = 'utf8') => {
       if(err) {
         return reject(err);
       }
-      resolve(data)
+      resolve(data);
     });
   });
 };

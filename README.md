@@ -25,3 +25,6 @@ npm start:client
 ```
 
 4. Then go to your browser at `http://localhost:9000`
+
+5. Click on one of the songs in the "Songs" panel on the left, it should
+auto-play it.
